@@ -207,7 +207,7 @@ if (isset($_POST['btnGrabar'])) {
             ?>
             <label>Categoría :</label>
             <select class="form-select" name="cboCategorias" required>
-              <option value="<?php  echo $datosPro['marca_id'];?>"><?php echo getNombreMarcaById($datosPro['marca_id']); ?></option>
+              <option value="<?php  echo $datosPro['catego_id'];?>"><?php echo getNombreMarcaById($datosPro['marca_id']); ?></option>
               <?php
               if ($categorias != null) {
                 foreach ($categorias as $indice => $rowc) {
@@ -219,7 +219,7 @@ if (isset($_POST['btnGrabar'])) {
               ?>
             </select>
             <!--  -->
-            <button type="submit" name="btnGrabar" class="btn btn-primary btn-sm mt-2">Grabar</button>
+            <button type="submit" name="btnGrabar" class="btn btn-primary btn-sm mt-2">Grabar CAMBIOS</button>
           </div>
         </div>
       </div>
