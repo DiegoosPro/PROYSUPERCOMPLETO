@@ -165,19 +165,19 @@ if (isset($_POST['btnGrabar'])) {
           <div class="card-body">
             <h5>ESTOY EN LADO DERECHO</h5>
             <div class="form-check">
-              <input name="chkPagaIva" class="form-check-input" type="checkbox">
+              <input name="chkPagaIva" <?php if($datosPro['pro_aplica_iva']==1 ) echo "checked";?> class="form-check-input" type="checkbox">
               <label class="form-check-label"><strong>Paga Iva</strong></label>
             </div>
 
             <label>Especificaciones :</label>
             <div class="input-group mb-3">
               <span class="input-group-text" id="basic-addon1">#</span>
-              <textarea name="txtEspecifica" class="form-control"></textarea>
+              <textarea name="txtEspecifica" class="form-control"><?php echo $datosPro['pro_especifica'];?></textarea>
             </div>
             <!-- imagen -->
             <div class="input-group">
               <p>
-                <img src="../imagenes/sinimagen.jpeg" id="imguserId" class="img-circle" height="150" width="150" />
+                <img src="../imagenes/<?php echo $datosPro['pro_imagen']; ?> " id="imguserId" class="img-circle" height="150" width="150" />
                 <input class="input-group" type="file" name="imguser" id="fotoId" onchange="previewFoto()" accept="image/*">
                 <label for="ejemplo_archivo_1">Imagen (Tam. máximo archivo
                   1 MB)</label>
@@ -193,8 +193,9 @@ if (isset($_POST['btnGrabar'])) {
               <?php
               if ($marcas != null) {
                 foreach ($marcas as $indice => $rowm) {
+                    if($datosPro['marca_id'] != $rowm['marca_id']) {
               ?>
-                  <option value="<?php echo $rowm['marca_id']; ?>"><?php echo $rowm['marca_descripcion']; ?></option>
+              <option value="<?php  echo $datosPro['marca_id'];?>"><?php echo getNombreMarcaById($datosPro['marca_id']); ?></option>
               <?php
                 }
               }
@@ -206,7 +207,7 @@ if (isset($_POST['btnGrabar'])) {
             ?>
             <label>Categoría :</label>
             <select class="form-select" name="cboCategorias" required>
-              <option value="">-Seleccione Categoria-</option>
+              <option value="<?php  echo $datosPro['marca_id'];?>"><?php echo getNombreMarcaById($datosPro['marca_id']); ?></option>
               <?php
               if ($categorias != null) {
                 foreach ($categorias as $indice => $rowc) {
