@@ -23,6 +23,31 @@ function getAllProductos()
   }
 }
 
+// RETORNA UN REGISTRO
+function getProductoById($idbusca)
+{
+  try {
+    $sql = "SELECT * FROM tab_productos
+          WHERE pro_id=:ppro_id";
+    $conexion = conectaBaseDatos();
+    $stmt = $conexion->prepare($sql);
+    $stmt->bindparam(":ppro_id", $idbusca);
+    $stmt->execute();
+    if ($stmt->rowCount() > 0) {
+      $registro = $stmt->fetch(PDO::FETCH_ASSOC);
+      return $registro;
+    } else {
+      return null;
+    }
+  } catch (PDOException $e) {
+    echo $e->getMessage();
+    return null;
+  }
+}
+
+
+
+
 function insertProducto($pro_id,$pro_descripcion, $pro_precio_c,$pro_precio_v,
 $pro_stock,$pro_fecha_elab,$pro_nivel_azucar, $pro_aplica_iva,
 $pro_especifica, $pro_imagen, $marca_id, $catego_id )

@@ -66,7 +66,7 @@ include_once "head.php";
           </td>
           <td>
             <a href="#" class="btn btn-sm btn-info">Ver</a>
-            <a href="#" class="btn btn-sm btn-warning">Editar</a>
+            <a href="proeditar.php?pro_id=<?php echo $row['pro_id'];?>" type="button" class="btn btn-sm btn-warning">Editar</a>
             <a href="#" class="btn btn-sm btn-danger">Eliminar</a>
           </td>
         </tr>
