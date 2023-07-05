@@ -7,6 +7,7 @@ include_once "view/head.php";
 
 <?php 
 include_once "view/footer.php";
+/**prueba  */
 ?>
 
 
